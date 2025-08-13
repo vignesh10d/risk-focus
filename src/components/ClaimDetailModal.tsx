@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RiskBadge } from "./RiskBadge";
-import { AlertTriangle, Calendar, DollarSign, FileText, User, Building } from "lucide-react";
+import { AlertTriangle, Calendar, DollarSign, FileText, User, Building, BookOpen, Video, FileDown, Users, Clock } from "lucide-react";
 
 interface Claim {
   id: string;
@@ -47,6 +47,37 @@ export const ClaimDetailModal = ({ claim, open, onOpenChange }: ClaimDetailModal
     previousAudits: 3,
     costPerUnit: 125.50
   };
+
+  const educationalRecommendations = [
+    {
+      title: "ICD-10-CM Coding Guidelines",
+      type: "Course",
+      duration: "2 hours",
+      relevance: "high",
+      icon: BookOpen
+    },
+    {
+      title: "Documentation Requirements for Mental Health",
+      type: "Video",
+      duration: "45 min",
+      relevance: "high",
+      icon: Video
+    },
+    {
+      title: "Compliance Audit Best Practices",
+      type: "Workshop",
+      duration: "3 hours",
+      relevance: "medium",
+      icon: Users
+    },
+    {
+      title: "Medicare Guidelines Update",
+      type: "Document",
+      duration: "30 min",
+      relevance: "medium",
+      icon: FileDown
+    }
+  ];
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -252,6 +283,50 @@ export const ClaimDetailModal = ({ claim, open, onOpenChange }: ClaimDetailModal
                   </div>
                 ))}
               </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Educational Recommendations */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg flex items-center gap-2">
+              <BookOpen className="h-5 w-5 text-primary" />
+              Educational Recommendations
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {educationalRecommendations.map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <div key={index} className="flex items-start gap-3 p-4 rounded-lg border bg-card hover:bg-accent/5 transition-colors">
+                    <div className="p-2 rounded-md bg-primary/10">
+                      <IconComponent className="h-4 w-4 text-primary" />
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <div>
+                        <h4 className="text-sm font-medium">{item.title}</h4>
+                        <div className="flex items-center gap-2 mt-1">
+                          <Badge variant={item.relevance === "high" ? "default" : "secondary"} className="text-xs">
+                            {item.relevance} relevance
+                          </Badge>
+                          <span className="text-xs text-muted-foreground">{item.type}</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <Clock className="h-3 w-3" />
+                          {item.duration}
+                        </div>
+                        <button className="text-xs text-primary hover:underline font-medium">
+                          Start Learning
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </CardContent>
         </Card>
