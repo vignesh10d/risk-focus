@@ -52,6 +52,19 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				risk: {
+					high: 'hsl(var(--risk-high))',
+					'high-foreground': 'hsl(var(--risk-high-foreground))',
+					medium: 'hsl(var(--risk-medium))',
+					'medium-foreground': 'hsl(var(--risk-medium-foreground))',
+					low: 'hsl(var(--risk-low))',
+					'low-foreground': 'hsl(var(--risk-low-foreground))'
+				},
+				healthcare: {
+					primary: 'hsl(var(--healthcare-primary))',
+					secondary: 'hsl(var(--healthcare-secondary))',
+					accent: 'hsl(var(--healthcare-accent))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -88,7 +101,20 @@ export default {
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+				'fade-in': 'fadeIn 0.5s ease-in-out',
+				'slide-up': 'slideUp 0.3s ease-out'
+			},
+			backgroundImage: {
+				'gradient-healthcare': 'var(--gradient-healthcare)',
+				'gradient-risk': 'var(--gradient-risk)',
+				'gradient-card': 'var(--gradient-card)'
+			},
+			boxShadow: {
+				'soft': 'var(--shadow-soft)',
+				'medium': 'var(--shadow-medium)',
+				'strong': 'var(--shadow-strong)'
 			}
 		}
 	},
