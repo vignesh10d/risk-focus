@@ -8,7 +8,9 @@ import {
 } from "@/components/ui/table";
 import { RiskBadge } from "./RiskBadge";
 import { Button } from "@/components/ui/button";
+import { ClaimDetailModal } from "./ClaimDetailModal";
 import { Eye, FileText, AlertTriangle } from "lucide-react";
+import { useState } from "react";
 
 interface Claim {
   id: string;
@@ -70,7 +72,21 @@ const mockClaims: Claim[] = [
 ];
 
 export const ClaimsTable = () => {
+  const [selectedClaim, setSelectedClaim] = useState<Claim | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleViewClaim = (claim: Claim) => {
+    setSelectedClaim(claim);
+    setModalOpen(true);
+  };
+
   return (
+    <>
+      <ClaimDetailModal 
+        claim={selectedClaim}
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+      />
     <div className="rounded-lg border bg-card shadow-soft">
       <Table>
         <TableHeader>
@@ -126,7 +142,11 @@ export const ClaimsTable = () => {
               </TableCell>
               <TableCell>
                 <div className="flex space-x-1">
-                  <Button variant="ghost" size="sm">
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={() => handleViewClaim(claim)}
+                  >
                     <Eye className="h-4 w-4" />
                   </Button>
                   <Button variant="ghost" size="sm">
@@ -139,5 +159,6 @@ export const ClaimsTable = () => {
         </TableBody>
       </Table>
     </div>
+    </>
   );
 };
