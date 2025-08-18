@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 218 25% 97%;
+    --background: 215 25% 97%;
     --foreground: 218 25% 15%;
 
     --card: 0 0% 100%;
@@ -20,44 +20,51 @@ All colors MUST be HSL.
     --primary: 210 95% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 25% 92%;
+    --secondary: 210 20% 94%;
     --secondary-foreground: 218 25% 25%;
 
-    --muted: 210 25% 95%;
+    --muted: 210 20% 96%;
     --muted-foreground: 218 15% 55%;
 
-    --accent: 210 25% 92%;
-    --accent-foreground: 218 25% 25%;
+    --accent: 167 85% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 25% 88%;
-    --input: 210 25% 88%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
     --ring: 210 95% 55%;
 
-    /* Risk-based colors */
+    /* Enhanced risk-based colors */
     --risk-high: 0 84% 60%;
     --risk-high-foreground: 0 0% 100%;
-    --risk-medium: 45 93% 58%;
-    --risk-medium-foreground: 45 25% 15%;
+    --risk-medium: 38 92% 65%;
+    --risk-medium-foreground: 38 25% 15%;
     --risk-low: 142 76% 36%;
     --risk-low-foreground: 0 0% 100%;
 
-    /* Healthcare accent colors */
+    /* Enhanced healthcare colors */
     --healthcare-primary: 210 95% 55%;
     --healthcare-secondary: 195 100% 50%;
     --healthcare-accent: 167 85% 45%;
+    --healthcare-success: 142 76% 36%;
+    --healthcare-warning: 38 92% 65%;
+    --healthcare-danger: 0 84% 60%;
 
-    /* Gradients */
+    /* Enhanced gradients */
     --gradient-healthcare: linear-gradient(135deg, hsl(var(--healthcare-primary)), hsl(var(--healthcare-secondary)));
-    --gradient-risk: linear-gradient(90deg, hsl(var(--risk-low)), hsl(var(--risk-medium)), hsl(var(--risk-high)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--healthcare-success)), hsl(142 60% 50%));
+    --gradient-warning: linear-gradient(135deg, hsl(var(--healthcare-warning)), hsl(45 90% 70%));
+    --gradient-danger: linear-gradient(135deg, hsl(var(--healthcare-danger)), hsl(0 70% 70%));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 25% 98%));
+    --gradient-card-hover: linear-gradient(145deg, hsl(210 25% 99%), hsl(210 25% 96%));
 
-    /* Shadows */
-    --shadow-soft: 0 2px 8px -2px hsl(var(--primary) / 0.1);
-    --shadow-medium: 0 4px 16px -4px hsl(var(--primary) / 0.15);
-    --shadow-strong: 0 8px 32px -8px hsl(var(--primary) / 0.2);
+    /* Enhanced shadows */
+    --shadow-soft: 0 2px 8px -2px hsl(var(--primary) / 0.08);
+    --shadow-medium: 0 4px 16px -4px hsl(var(--primary) / 0.12);
+    --shadow-strong: 0 8px 32px -8px hsl(var(--primary) / 0.16);
+    --shadow-glow: 0 0 20px -5px hsl(var(--primary) / 0.2);
 
     --radius: 0.5rem;
 
@@ -145,6 +152,33 @@ All colors MUST be HSL.
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+
+  @keyframes bounce-subtle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.6);
     }
   }
 }

@@ -97,6 +97,18 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				shimmer: {
+					'0%': { backgroundPosition: '-200px 0' },
+					'100%': { backgroundPosition: 'calc(200px + 100%) 0' }
+				},
+				'bounce-subtle': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-2px)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { boxShadow: '0 0 5px hsl(var(--primary) / 0.3)' },
+					'50%': { boxShadow: '0 0 20px hsl(var(--primary) / 0.6)' }
 				}
 			},
 			animation: {
@@ -104,12 +116,18 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 				'fade-in': 'fadeIn 0.5s ease-in-out',
-				'slide-up': 'slideUp 0.3s ease-out'
+				'slide-up': 'slideUp 0.3s ease-out',
+				'shimmer': 'shimmer 2s linear infinite',
+				'bounce-subtle': 'bounce-subtle 2s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
 			},
 			backgroundImage: {
 				'gradient-healthcare': 'var(--gradient-healthcare)',
-				'gradient-risk': 'var(--gradient-risk)',
-				'gradient-card': 'var(--gradient-card)'
+				'gradient-success': 'var(--gradient-success)',
+				'gradient-warning': 'var(--gradient-warning)',
+				'gradient-danger': 'var(--gradient-danger)',
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-card-hover': 'var(--gradient-card-hover)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',
